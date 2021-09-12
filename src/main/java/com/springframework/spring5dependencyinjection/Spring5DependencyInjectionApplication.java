@@ -1,9 +1,6 @@
 package com.springframework.spring5dependencyinjection;
 
-import com.springframework.spring5dependencyinjection.controllers.ConstructorInjectedController;
-import com.springframework.spring5dependencyinjection.controllers.MyController;
-import com.springframework.spring5dependencyinjection.controllers.PropertyInjectedController;
-import com.springframework.spring5dependencyinjection.controllers.SetterInjectedController;
+import com.springframework.spring5dependencyinjection.controllers.*;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -16,7 +13,7 @@ public class Spring5DependencyInjectionApplication {
 
         MyController myController = (MyController) appContext.getBean("myController");
 
-        String greetings = myController.sayHello();
+        String greetings = myController.getGreeting();
 
         System.out.println(greetings);
 
@@ -37,6 +34,14 @@ public class Spring5DependencyInjectionApplication {
 
         System.out.println(constructorInjectedController.getGreeting());
 
+        System.out.println("--------Primary Service-----------");
+
+        System.out.println(myController.getGreeting());
+
+        System.out.println("--------I18N Service and Profiles-----------");
+
+        I18nController i18nController = (I18nController) appContext.getBean("i18nController");
+        System.out.println(i18nController.getGreeting());
 
 
     }
